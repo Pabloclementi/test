@@ -14,8 +14,7 @@ credentials = service_account.Credentials.from_service_account_info(credentials_
 client = bigquery.Client(credentials=credentials, location="us-central1")
 
 # Reemplaza esta URL con la URL de tu imagen de fondo
-background_image_url = "https://images.mlssoccer.com/image/private/t_editorial_landscape_12_desktop_2x/f_auto/mls-dcu-prd/xjinghak1hkkxzt5jvt7.jpg"
-
+background_image_url = "https://i0.wp.com/13thmansports.ca/wp-content/uploads/2022/08/F9EF1063-9AE7-4943-A384-ED6C9250EDB3.jpg?w=1280&ssl=1"
 st.markdown(f"""
     <style>
         .stApp {{
@@ -30,6 +29,7 @@ st.markdown(f"""
             font-weight: bold;
             text-align: center;
             padding-top: 20px;
+            color: white;
         }}
         .input-field {{
             margin: 10px 0;
