@@ -33,6 +33,11 @@ st.markdown(f"""
         .input-field {{
             margin: 10px 0;
             color: white; /* Color del texto en los campos de entrada */
+            background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente para los campos de entrada */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            width: 100%;
         }}
         .recommendations {{
             font-size: 1.2em;
@@ -52,6 +57,17 @@ st.markdown(f"""
         }}
         a {{
             color: #00aaff; /* Color de los enlaces */
+        }}
+        .stButton {{
+            background-color: red; /* Color de fondo del botón */
+            color: white; /* Color del texto del botón */
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 1em;
+        }}
+        .stButton:hover {{
+            background-color: darkred; /* Color de fondo del botón al pasar el mouse */
         }}
     </style>
 """, unsafe_allow_html=True)
@@ -117,10 +133,10 @@ def find_similar_restaurants(name, stadium, num_recommendations=5):
 st.title("Recomendación de Restaurantes")
 
 # Campo de selección para estadios
-stadium = st.selectbox("Selecciona el estadio", estados['stadium'].unique())
+stadium = st.selectbox("Selecciona el estadio", estados['stadium'].unique(), key="stadium", help="Selecciona un estadio de la lista")
 
 # Input field para el nombre del restaurante
-name = st.text_input("Nombre del restaurante")
+name = st.text_input("Nombre del restaurante", key="name", help="Escribe el nombre del restaurante")
 
 # Botón para obtener recomendaciones
 if st.button("Obtener recomendaciones"):
