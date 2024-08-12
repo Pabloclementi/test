@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 from sklearn.preprocessing import MultiLabelBinarizer
 from sklearn.metrics.pairwise import cosine_similarity
-import json
 from google.cloud import bigquery
 from google.oauth2 import service_account
 
@@ -22,20 +21,22 @@ st.markdown(f"""
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: white;
+            color: white; /* Color del texto en general */
         }}
         .title {{
             font-size: 2em;
             font-weight: bold;
             text-align: center;
             padding-top: 20px;
-            color: white;
+            color: white; /* Color del título */
         }}
         .input-field {{
             margin: 10px 0;
+            color: white; /* Color del texto en los campos de entrada */
         }}
         .recommendations {{
             font-size: 1.2em;
+            color: white; /* Color del texto en las recomendaciones */
         }}
         .restaurant-card {{
             border: 1px solid #ddd;
@@ -43,6 +44,14 @@ st.markdown(f"""
             padding: 10px;
             margin: 10px 0;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente para las tarjetas */
+            color: white; /* Color del texto en las tarjetas */
+        }}
+        h1, h2, h3, h4, h5, h6 {{
+            color: white; /* Color de todos los encabezados */
+        }}
+        a {{
+            color: #00aaff; /* Color de los enlaces */
         }}
     </style>
 """, unsafe_allow_html=True)
