@@ -75,8 +75,8 @@ st.markdown(f"""
             text-decoration: none;
         }}
         .stButton>button {{
-            background-color: transparent; /* Fondo transparente del botón */
-            color: #FF4500; /* Color del texto del botón */
+            background-color: #FF4500; /* Fondo transparente del botón */
+            color: #FFFFFF; /* Color del texto del botón */
             border: 2px solid #FF4500; /* Borde rojo del botón */
             border-radius: 4px;
             padding: 10px 20px;
