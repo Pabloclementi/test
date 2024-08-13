@@ -28,7 +28,11 @@ st.markdown(f"""
             font-weight: bold;
             text-align: center;
             padding-top: 20px;
-            color: #FFFFFF; /* Color del título en blanco */
+            color: #FFFFFF; /* Restaurar el color del título a blanco */
+            text-shadow: 2px 2px 6px #000; /* Sombra del texto para mejorar la legibilidad */
+        }}
+        h1, h2, h3, h4, h5, h6 {{
+            color: #FFFFFF; /* Restaurar el color de todos los encabezados a blanco */
             text-shadow: 2px 2px 6px #000; /* Sombra del texto para mejorar la legibilidad */
         }}
         .stTextInput > label {{
