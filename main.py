@@ -33,8 +33,8 @@ st.markdown(f"""
         }}
         .input-field {{
             margin: 10px 0;
-            color: #FFFFFF; /* Color del texto en los campos de entrada */
-            background-color: rgba(0, 0, 0, 0.4); /* Fondo semitransparente para los campos de entrada */
+            color: #000000; /* Color del texto en los campos de entrada */
+            background-color: #FFFFFF; /* Fondo blanco para los campos de entrada */
             border: 1px solid #FFD700; /* Borde dorado */
             border-radius: 4px;
             padding: 5px;
@@ -80,6 +80,14 @@ st.markdown(f"""
         }}
         .stSelectbox>div>label {{
             color: #FFFFFF; /* Color de las pequeñas letras en el campo de selección */
+        }}
+        .stTextInput>div>input {{
+            color: #000000; /* Color del texto dentro del campo de entrada de texto */
+            background-color: #FFFFFF; /* Fondo blanco del campo de entrada de texto */
+        }}
+        .stSelectbox>div>input {{
+            color: #000000; /* Color del texto dentro del campo de selección */
+            background-color: #FFFFFF; /* Fondo blanco del campo de selección */
         }}
     </style>
 """, unsafe_allow_html=True)
