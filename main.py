@@ -23,8 +23,8 @@ st.markdown(f"""
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: #E0E0E0; /* Color del texto en general */
-            opacity: 0.85; /* Hacer la imagen de fondo opaca */
+            color: #FFFFF; /* Color del texto en general */
+            opacity: 0.75; /* Hacer la imagen de fondo opaca */
         }}
         .title {{
             font-size: 2.5em;
