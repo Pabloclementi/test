@@ -149,7 +149,7 @@ def find_similar_restaurants(name, stadium, num_recommendations=5):
     similarity_df = pd.DataFrame(similarity_matrix, index=combined_matrix.index, columns=combined_matrix.index)
     
     # Obtener restaurantes similares
-    similar_restaurants = similarity_df[name].sort_values(by='avg_rating',ascending=False).head(num_recommendations + 1).index.tolist()
+    similar_restaurants = similarity_df[name].sort_values(ascending=False).head(num_recommendations + 1).index.tolist()
     similar_restaurants.remove(name)
     
     recommendations = estados[estados['name'].isin(similar_restaurants) & (estados['stadium'] == stadium)].drop_duplicates(subset=['name']).head(num_recommendations)
