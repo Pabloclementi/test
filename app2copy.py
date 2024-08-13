@@ -14,13 +14,12 @@ import os
 from google.cloud import bigquery 
 from google.oauth2 import service_account
 
-# Configuración de las credenciales de Google Cloud
-credentials_json = {
-    "type": "service_account",
-    # ... aquí irían las demás claves del archivo JSON ...
-}
+# Leer las credenciales desde los secretos de Streamlit
+credentials_json = st.secrets["GOOGLE_CREDENTIALS"]
+
+# Configurar la conexión a BigQuery usando las credenciales desde el secreto
 credentials = service_account.Credentials.from_service_account_info(credentials_json)
-client = bigquery.Client(credentials=credentials, project=credentials.project_id)
+client = bigquery.Client(credentials=credentials, location="us-central1")
 
 # Cargar los datos
 def load_data():
