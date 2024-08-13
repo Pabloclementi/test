@@ -6,20 +6,21 @@ from sklearn.neighbors import KNeighborsClassifier
 from scipy.sparse import hstack
 import streamlit as st
 import joblib
+import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import os
-from google.cloud import bigquery 
-from google.oauth2 import service_account 
-import nltk
+from google.cloud import bigquery
 
-# Leer las credenciales desde los secretos de Streamlit
-credentials_json = st.secrets["GOOGLE_CREDENTIALS"]
+# Descarga de stopwords y wordnet si no están ya disponibles
+nltk.download('stopwords', quiet=True)
+nltk.download('wordnet', quiet=True)
+nltk.download('punkt', quiet=True)
 
-# Configurar la conexión a BigQuery usando las credenciales desde el secreto
-credentials = service_account.Credentials.from_service_account_info(credentials_json)
-client = bigquery.Client(credentials=credentials, location="us-central1")
+# Configuración de las credenciales de Google Cloud
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'credenciales.json'
+client = bigquery.Client(location="us-central1")
 
 # Cargar los datos
 def load_data():
