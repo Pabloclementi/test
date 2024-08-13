@@ -75,6 +75,12 @@ st.markdown(f"""
         .stButton>button:hover {{
             background-color: #FF6347; /* Color de fondo del botón al pasar el mouse */
         }}
+        .stTextInput>div>label {{
+            color: #FFFFFF; /* Color de las pequeñas letras en los campos de entrada */
+        }}
+        .stSelectbox>div>label {{
+            color: #FFFFFF; /* Color de las pequeñas letras en el campo de selección */
+        }}
     </style>
 """, unsafe_allow_html=True)
 
