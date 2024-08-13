@@ -12,6 +12,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import os
 from google.cloud import bigquery 
+from google.oauth2 import service_account
 
 # Leer las credenciales desde los secretos de Streamlit
 credentials_json = st.secrets["GOOGLE_CREDENTIALS"]
