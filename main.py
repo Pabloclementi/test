@@ -16,34 +16,15 @@ client = bigquery.Client(credentials=credentials, location="us-central1")
 # Reemplaza esta URL con la URL de tu imagen de fondo
 background_image_url = "https://cdn.prod.website-files.com/5ddedd0e3047ab406ee3c37e/64aeef75a9175bfa44144333_Stadium_8.0.jpg"
 
-# Agregar estilo personalizado con transparencia en la imagen de fondo
 st.markdown(f"""
     <style>
         .stApp {{
-            position: relative;
-            background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semi-transparente */
-        }}
-        
-        .stApp::before {{
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             background-image: url("{background_image_url}");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            opacity: 0.5; /* Controla la transparencia de la imagen */
-            z-index: -1;
+            color: #E0E0E0; /* Color del texto en general */
         }}
-        
-        .stApp > * {{
-            position: relative;
-            z-index: 1;
-        }}
-
         .title {{
             font-size: 2.5em;
             font-weight: bold;
@@ -71,7 +52,7 @@ st.markdown(f"""
             background-color: #FFFFFF; /* Fondo blanco del campo de selección */
         }}
         .restaurant-card {{
-            border: 1px solid #FFD700; /* Borde dorado */
+            border: 2px solid #FFD700; /* Borde dorado */
             border-radius: 8px;
             padding: 10px;
             margin: 10px 0;
@@ -96,7 +77,7 @@ st.markdown(f"""
             text-decoration: none;
         }}
         .stButton>button {{
-            background-color: rgba(255, 69, 0, 0.8); /* Fondo rojo semi-transparente del botón */
+            background-color: rgba(255, 69, 0, 0.8); /* Fondo transparente del botón */
             color: #FFFFFF; /* Color del texto del botón */
             border: 2px solid #FF4500; /* Borde rojo del botón */
             border-radius: 4px;
@@ -188,7 +169,13 @@ if st.button("Obtener recomendaciones"):
             recommendations = find_similar_restaurants(name, stadium)
             st.write(f"Recomendaciones para {name} cerca de {stadium}:")
             for _, row in recommendations.iterrows():
-                st.markdown(f"- [{row['name']}]({row['url']}) - Calificación: {row['avg_rating']}")
+                st.markdown(f"""
+                <div class="restaurant-card">
+                    <h4>{row['name']}</h4>
+                    <p>Calificación: {row['avg_rating']}</p>
+                    <p><a href="{row['url']}" target="_blank">Ver en Google Maps</a></p>
+                </div>
+                """, unsafe_allow_html=True)
         except ValueError as e:
             st.error(str(e))
     else:
