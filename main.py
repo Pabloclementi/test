@@ -16,7 +16,7 @@ client = bigquery.Client(credentials=credentials, location="us-central1")
 # URL de la imagen de fondo
 background_image_url = "https://cdn.prod.website-files.com/5ddedd0e3047ab406ee3c37e/64aeef75a9175bfa44144333_Stadium_8.0.jpg"
 
-# Estilo de la aplicación
+# Agregar estilo personalizado
 st.markdown(f"""
     <style>
         .stApp {{
@@ -24,45 +24,44 @@ st.markdown(f"""
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: #E0E0E0; /* Color del texto en general */
-            background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
-            opacity = 0.70
+            color: #E0E0E0;
+            opacity: 0.75; /* Opacidad de la imagen de fondo */
         }}
         .title {{
             font-size: 2.5em;
             font-weight: bold;
             text-align: center;
             padding-top: 20px;
-            color: #FFFFFF; /* Color del título en blanco */
-            text-shadow: 2px 2px 6px #000; /* Sombra del texto para mejorar la legibilidad */
+            color: #FFFFFF;
+            text-shadow: 2px 2px 6px #000;
         }}
         h1, h2, h3, h4, h5, h6 {{
-            color: #FFFFFF; /* Restaurar el color de todos los encabezados a blanco */
-            text-shadow: 2px 2px 6px #000; /* Sombra del texto para mejorar la legibilidad */
+            color: #FFFFFF;
+            text-shadow: 2px 2px 6px #000;
         }}
         .stTextInput > label {{
-            color: #FFFFFF; /* Color de las etiquetas de los campos de texto */
+            color: #FFFFFF;
         }}
         .stSelectbox > label {{
-            color: #FFFFFF; /* Color de las etiquetas de los campos de selección */
+            color: #FFFFFF;
         }}
         .stTextInput>div>input {{
-            color: #000000; /* Color del texto dentro del campo de entrada de texto */
-            background-color: #FFFFFF; /* Fondo blanco del campo de entrada de texto */
+            color: #000000;
+            background-color: #FFFFFF;
         }}
         .stSelectbox>div>input {{
-            color: #000000; /* Color del texto dentro del campo de selección */
-            background-color: #FFFFFF; /* Fondo blanco del campo de selección */
+            color: #000000;
+            background-color: #FFFFFF;
         }}
         .restaurant-card {{
-            border: 1px solid #FFD700; /* Borde dorado */
+            border: 1px solid #FFD700;
             border-radius: 8px;
             padding: 10px;
             margin: 10px 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Sombra para las tarjetas */
-            background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro y semitransparente para las tarjetas */
-            color: #FFFFFF; /* Color del texto en las tarjetas */
-            text-shadow: 1px 1px 3px #000; /* Sombra para mejorar la legibilidad */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #FFFFFF;
+            text-shadow: 1px 1px 3px #000;
         }}
         .restaurant-card h4 {{
             margin: 0;
@@ -76,33 +75,31 @@ st.markdown(f"""
             font-size: 1.2em;
         }}
         .restaurant-card a {{
-            color: #1E90FF; /* Color de los enlaces en las tarjetas */
+            color: #1E90FF;
             text-decoration: none;
         }}
         .stButton>button {{
-            background-color: #FF4500; /* Fondo transparente del botón */
-            color: #FFFFFF; /* Color del texto del botón */
-            border: 2px solid #FF4500; /* Borde rojo del botón */
+            background-color: transparent;
+            color: #FFFFFF;
+            border: 2px solid #FF4500;
             border-radius: 4px;
             padding: 10px 20px;
             font-size: 1em;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Sombra para los botones */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
             transition: background-color 0.3s ease;
         }}
         .stButton>button:hover {{
-            background-color: #FF4500; /* Fondo rojo del botón al pasar el mouse */
-            color: #FFFFFF; /* Color del texto al pasar el mouse */
+            background-color: #FF4500;
+            color: #FFFFFF;
         }}
-        .recommendation-header {{
-            color: #FFFFFF; /* Color blanco */
-            font-weight: bold; /* Texto en negrita */
-            font-size: 1.5em;
-            text-shadow: 1px 1px 3px #000; /* Sombra para mejorar la legibilidad */
+        .stMarkdown {{
+            color: #FFFFFF;
+            font-weight: bold;
         }}
     </style>
 """, unsafe_allow_html=True)
 
-# Verificar si el archivo existe antes de cargarlo
+# Cargar los datos
 def load_data():
     query = """
     SELECT 
@@ -176,9 +173,15 @@ if st.button("Obtener recomendaciones"):
     if name and stadium:
         try:
             recommendations = find_similar_restaurants(name, stadium)
-            st.markdown(f"<div class='recommendation-header'>Recomendaciones para {name} cerca de {stadium}:</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='stMarkdown'>Recomendaciones para {name} cerca de {stadium}:</div>", unsafe_allow_html=True)
             for _, row in recommendations.iterrows():
-                st.markdown(f"<div class='restaurant-card'><h4>{row['name']}</h4><p>Calificación: {row['avg_rating']}</p><a href='{row['url']}'>Ver en Google Maps</a></div>", unsafe_allow_html=True)
+                st.markdown(f"""
+                <div class="restaurant-card">
+                    <h4>{row['name']}</h4>
+                    <p>Calificación: {row['avg_rating']}</p>
+                    <p><a href="{row['url']}">Visitar</a></p>
+                </div>
+                """, unsafe_allow_html=True)
         except ValueError as e:
             st.error(str(e))
     else:
