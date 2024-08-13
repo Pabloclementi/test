@@ -31,55 +31,11 @@ st.markdown(f"""
             color: #FFFFFF; /* Color del título en blanco */
             text-shadow: 2px 2px 6px #000; /* Sombra del texto para mejorar la legibilidad */
         }}
-        .input-field {{
-            margin: 10px 0;
-            color: #000000; /* Color del texto en los campos de entrada */
-            background-color: #FFFFFF; /* Fondo blanco para los campos de entrada */
-            border: 1px solid #FFD700; /* Borde dorado */
-            border-radius: 4px;
-            padding: 5px;
-            width: 100%;
+        .stTextInput > label {{
+            color: #FFFFFF; /* Color de las etiquetas de los campos de texto */
         }}
-        .recommendations {{
-            font-size: 1.2em;
-            color: #FFFFFF; /* Color del texto en las recomendaciones */
-            text-shadow: 1px 1px 3px #000; /* Sombra ligera para mejorar la legibilidad */
-        }}
-        .restaurant-card {{
-            border: 1px solid #FFD700; /* Borde dorado */
-            border-radius: 8px;
-            padding: 10px;
-            margin: 10px 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Sombra para las tarjetas */
-            background-color: rgba(0, 0, 0, 0.6); /* Fondo más oscuro y semitransparente para las tarjetas */
-            color: #FFFFFF; /* Color del texto en las tarjetas */
-            text-shadow: 1px 1px 3px #000; /* Sombra para mejorar la legibilidad */
-        }}
-        h1, h2, h3, h4, h5, h6 {{
-            color: #FFFFFF; /* Color de todos los encabezados en blanco */
-            text-shadow: 2px 2px 6px #000; /* Sombra del texto para mejorar la legibilidad */
-        }}
-        a {{
-            color: #1E90FF; /* Color de los enlaces en azul claro */
-        }}
-        .stButton>button {{
-            background-color: #FF4500; /* Color de fondo del botón en rojo */
-            color: #FFFFFF; /* Color del texto del botón */
-            border: none;
-            border-radius: 4px;
-            padding: 10px 20px;
-            font-size: 1em;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Sombra para los botones */
-            transition: background-color 0.3s ease;
-        }}
-        .stButton>button:hover {{
-            background-color: #FF6347; /* Color de fondo del botón al pasar el mouse */
-        }}
-        .stTextInput>div>label {{
-            color: #FFFFFF; /* Color de las pequeñas letras en los campos de entrada */
-        }}
-        .stSelectbox>div>label {{
-            color: #FFFFFF; /* Color de las pequeñas letras en el campo de selección */
+        .stSelectbox > label {{
+            color: #FFFFFF; /* Color de las etiquetas de los campos de selección */
         }}
         .stTextInput>div>input {{
             color: #000000; /* Color del texto dentro del campo de entrada de texto */
