@@ -16,6 +16,7 @@ client = bigquery.Client(credentials=credentials, location="us-central1")
 # URL de la imagen de fondo
 background_image_url = "https://cdn.prod.website-files.com/5ddedd0e3047ab406ee3c37e/64aeef75a9175bfa44144333_Stadium_8.0.jpg"
 
+# Estilo de la aplicación
 st.markdown(f"""
     <style>
         .stApp {{
@@ -23,8 +24,8 @@ st.markdown(f"""
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: #FFFFF; /* Color del texto en general */
-            opacity: 0.75; /* Hacer la imagen de fondo opaca */
+            color: #E0E0E0; /* Color del texto en general */
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
         }}
         .title {{
             font-size: 2.5em;
@@ -90,6 +91,12 @@ st.markdown(f"""
         .stButton>button:hover {{
             background-color: #FF4500; /* Fondo rojo del botón al pasar el mouse */
             color: #FFFFFF; /* Color del texto al pasar el mouse */
+        }}
+        .recommendation-header {{
+            color: #FFFFFF; /* Color blanco */
+            font-weight: bold; /* Texto en negrita */
+            font-size: 1.5em;
+            text-shadow: 1px 1px 3px #000; /* Sombra para mejorar la legibilidad */
         }}
     </style>
 """, unsafe_allow_html=True)
@@ -168,15 +175,9 @@ if st.button("Obtener recomendaciones"):
     if name and stadium:
         try:
             recommendations = find_similar_restaurants(name, stadium)
-            st.write(f"Recomendaciones para {name} cerca de {stadium}:")
+            st.markdown(f"<div class='recommendation-header'>Recomendaciones para {name} cerca de {stadium}:</div>", unsafe_allow_html=True)
             for _, row in recommendations.iterrows():
-                st.markdown(f"""
-                    <div class="restaurant-card">
-                        <h4>{row['name']}</h4>
-                        <p>Calificación: {row['avg_rating']}</p>
-                        <a href="{row['url']}">Visitar Página</a>
-                    </div>
-                """, unsafe_allow_html=True)
+                st.markdown(f"<div class='restaurant-card'><h4>{row['name']}</h4><p>Calificación: {row['avg_rating']}</p><a href='{row['url']}'>Ver en Google Maps</a></div>", unsafe_allow_html=True)
         except ValueError as e:
             st.error(str(e))
     else:
