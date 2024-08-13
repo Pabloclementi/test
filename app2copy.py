@@ -20,6 +20,11 @@ credentials_json = st.secrets["GOOGLE_CREDENTIALS"]
 # Configurar la conexión a BigQuery usando las credenciales desde el secreto
 credentials = service_account.Credentials.from_service_account_info(credentials_json)
 client = bigquery.Client(credentials=credentials, location="us-central1")
+# Descarga de stopwords y wordnet si no están ya disponibles
+nltk.download('stopwords', quiet=True)
+nltk.download('wordnet', quiet=True)
+nltk.download('punkt', quiet=True)
+
 
 # Cargar los datos
 def load_data():
