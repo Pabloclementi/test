@@ -6,13 +6,16 @@ from sklearn.neighbors import KNeighborsClassifier
 from scipy.sparse import hstack
 import streamlit as st
 import joblib
-import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import os
 from google.cloud import bigquery 
-from google.oauth2 import service_account
+from google.oauth2 import service_account 
+import nltk
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('wordnet')
 
 # Leer las credenciales desde los secretos de Streamlit
 credentials_json = st.secrets["GOOGLE_CREDENTIALS"]
