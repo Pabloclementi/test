@@ -21,53 +21,57 @@ st.markdown(f"""
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: white; /* Color del texto en general */
+            color: #E0E0E0; /* Color del texto en general */
         }}
         .title {{
-            font-size: 2em;
+            font-size: 2.5em;
             font-weight: bold;
             text-align: center;
             padding-top: 20px;
-            color: white; /* Color del título */
+            color: #FFD700; /* Color del título en dorado */
+            text-shadow: 2px 2px 4px #000; /* Sombra del texto para mejor legibilidad */
         }}
         .input-field {{
             margin: 10px 0;
-            color: white; /* Color del texto en los campos de entrada */
-            background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente para los campos de entrada */
-            border: 1px solid #ddd;
+            color: #FFFFFF; /* Color del texto en los campos de entrada */
+            background-color: rgba(0, 0, 0, 0.4); /* Fondo semitransparente para los campos de entrada */
+            border: 1px solid #FFD700; /* Borde dorado */
             border-radius: 4px;
             padding: 5px;
             width: 100%;
         }}
         .recommendations {{
             font-size: 1.2em;
-            color: white; /* Color del texto en las recomendaciones */
+            color: #FFD700; /* Color del texto en las recomendaciones */
         }}
         .restaurant-card {{
-            border: 1px solid #ddd;
+            border: 1px solid #FFD700; /* Borde dorado */
             border-radius: 8px;
             padding: 10px;
             margin: 10px 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente para las tarjetas */
-            color: white; /* Color del texto en las tarjetas */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Sombra para las tarjetas */
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo más oscuro y semitransparente para las tarjetas */
+            color: #E0E0E0; /* Color del texto en las tarjetas */
         }}
         h1, h2, h3, h4, h5, h6 {{
-            color: white; /* Color de todos los encabezados */
+            color: #FFD700; /* Color de todos los encabezados en dorado */
+            text-shadow: 2px 2px 4px #000; /* Sombra del texto para mejor legibilidad */
         }}
         a {{
-            color: #00aaff; /* Color de los enlaces */
+            color: #1E90FF; /* Color de los enlaces en azul claro */
         }}
-        .stButton {{
-            background-color: red; /* Color de fondo del botón */
-            color: white; /* Color del texto del botón */
+        .stButton>button {{
+            background-color: #00A36C; /* Color de fondo del botón en verde azulado */
+            color: #FFFFFF; /* Color del texto del botón */
             border: none;
             border-radius: 4px;
             padding: 10px 20px;
             font-size: 1em;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Sombra para los botones */
+            transition: background-color 0.3s ease;
         }}
-        .stButton:hover {{
-            background-color: darkred; /* Color de fondo del botón al pasar el mouse */
+        .stButton>button:hover {{
+            background-color: #007f5f; /* Color de fondo del botón al pasar el mouse */
         }}
     </style>
 """, unsafe_allow_html=True)
