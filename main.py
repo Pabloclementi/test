@@ -28,8 +28,8 @@ st.markdown(f"""
             font-weight: bold;
             text-align: center;
             padding-top: 20px;
-            color: #FFD700; /* Color del título en dorado */
-            text-shadow: 2px 2px 4px #000; /* Sombra del texto para mejor legibilidad */
+            color: #FFFFFF; /* Color del título en blanco */
+            text-shadow: 2px 2px 6px #000; /* Sombra del texto para mejorar la legibilidad */
         }}
         .input-field {{
             margin: 10px 0;
@@ -42,7 +42,8 @@ st.markdown(f"""
         }}
         .recommendations {{
             font-size: 1.2em;
-            color: #FFD700; /* Color del texto en las recomendaciones */
+            color: #FFFFFF; /* Color del texto en las recomendaciones */
+            text-shadow: 1px 1px 3px #000; /* Sombra ligera para mejorar la legibilidad */
         }}
         .restaurant-card {{
             border: 1px solid #FFD700; /* Borde dorado */
@@ -50,18 +51,19 @@ st.markdown(f"""
             padding: 10px;
             margin: 10px 0;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Sombra para las tarjetas */
-            background-color: rgba(0, 0, 0, 0.7); /* Fondo más oscuro y semitransparente para las tarjetas */
-            color: #E0E0E0; /* Color del texto en las tarjetas */
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo más oscuro y semitransparente para las tarjetas */
+            color: #FFFFFF; /* Color del texto en las tarjetas */
+            text-shadow: 1px 1px 3px #000; /* Sombra para mejorar la legibilidad */
         }}
         h1, h2, h3, h4, h5, h6 {{
-            color: #FFD700; /* Color de todos los encabezados en dorado */
-            text-shadow: 2px 2px 4px #000; /* Sombra del texto para mejor legibilidad */
+            color: #FFFFFF; /* Color de todos los encabezados en blanco */
+            text-shadow: 2px 2px 6px #000; /* Sombra del texto para mejorar la legibilidad */
         }}
         a {{
             color: #1E90FF; /* Color de los enlaces en azul claro */
         }}
         .stButton>button {{
-            background-color: #00A36C; /* Color de fondo del botón en verde azulado */
+            background-color: #FF4500; /* Color de fondo del botón en rojo */
             color: #FFFFFF; /* Color del texto del botón */
             border: none;
             border-radius: 4px;
@@ -71,7 +73,7 @@ st.markdown(f"""
             transition: background-color 0.3s ease;
         }}
         .stButton>button:hover {{
-            background-color: #007f5f; /* Color de fondo del botón al pasar el mouse */
+            background-color: #FF6347; /* Color de fondo del botón al pasar el mouse */
         }}
     </style>
 """, unsafe_allow_html=True)
