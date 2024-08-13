@@ -16,42 +16,33 @@ client = bigquery.Client(credentials=credentials, location="us-central1")
 background_image_url = "https://cdn.prod.website-files.com/5ddedd0e3047ab406ee3c37e/64aeef75a9175bfa44144333_Stadium_8.0.jpg"
 st.markdown(f"""
     <style>
-        .stApp {{
-            background-image: url("{background_image_url}");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: #E0E0E0; /* Color del texto en general */
+        .restaurant-card {{
+            border: 1px solid #FFD700; /* Borde dorado */
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Sombra para las tarjetas */
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro y semitransparente para las tarjetas */
+            color: #FFFFFF; /* Color del texto en las tarjetas */
+            text-shadow: 1px 1px 3px #000; /* Sombra para mejorar la legibilidad */
         }}
-        .title {{
-            font-size: 2.5em;
+        .restaurant-card h4 {{
+            margin: 0;
+            padding-bottom: 10px;
+            font-size: 1.5em;
             font-weight: bold;
-            text-align: center;
-            padding-top: 20px;
-            color: #FFFFFF; /* Restaurar el color del título a blanco */
-            text-shadow: 2px 2px 6px #000; /* Sombra del texto para mejorar la legibilidad */
         }}
-        h1, h2, h3, h4, h5, h6 {{
-            color: #FFFFFF; /* Restaurar el color de todos los encabezados a blanco */
-            text-shadow: 2px 2px 6px #000; /* Sombra del texto para mejorar la legibilidad */
+        .restaurant-card p {{
+            margin: 0;
+            padding-bottom: 10px;
+            font-size: 1.2em;
         }}
-        .stTextInput > label {{
-            color: #FFFFFF; /* Color de las etiquetas de los campos de texto */
-        }}
-        .stSelectbox > label {{
-            color: #FFFFFF; /* Color de las etiquetas de los campos de selección */
-        }}
-        .stTextInput>div>input {{
-            color: #000000; /* Color del texto dentro del campo de entrada de texto */
-            background-color: #FFFFFF; /* Fondo blanco del campo de entrada de texto */
-        }}
-        .stSelectbox>div>input {{
-            color: #000000; /* Color del texto dentro del campo de selección */
-            background-color: #FFFFFF; /* Fondo blanco del campo de selección */
+        .restaurant-card a {{
+            color: #1E90FF; /* Color de los enlaces en las tarjetas */
+            text-decoration: none;
         }}
     </style>
 """, unsafe_allow_html=True)
-
 # Verificar si el archivo existe antes de cargarlo
 def load_data():
     query = """
