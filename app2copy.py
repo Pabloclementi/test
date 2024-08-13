@@ -13,9 +13,12 @@ from nltk.tokenize import word_tokenize
 import os
 from google.cloud import bigquery 
 
-# Configuración de las credenciales de Google Cloud
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'credenciales.json'
-client = bigquery.Client(location="us-central1")
+# Leer las credenciales desde los secretos de Streamlit
+credentials_json = st.secrets["GOOGLE_CREDENTIALS"]
+
+# Configurar la conexión a BigQuery usando las credenciales desde el secreto
+credentials = service_account.Credentials.from_service_account_info(credentials_json)
+client = bigquery.Client(credentials=credentials, location="us-central1")
 
 # Cargar los datos
 def load_data():
