@@ -16,6 +16,39 @@ client = bigquery.Client(credentials=credentials, location="us-central1")
 background_image_url = "https://cdn.prod.website-files.com/5ddedd0e3047ab406ee3c37e/64aeef75a9175bfa44144333_Stadium_8.0.jpg"
 st.markdown(f"""
     <style>
+        .stApp {{
+            background-image: url("{background_image_url}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #E0E0E0; /* Color del texto en general */
+        }}
+        .title {{
+            font-size: 2.5em;
+            font-weight: bold;
+            text-align: center;
+            padding-top: 20px;
+            color: #FFFFFF; /* Color del título en blanco */
+            text-shadow: 2px 2px 6px #000; /* Sombra del texto para mejorar la legibilidad */
+        }}
+        h1, h2, h3, h4, h5, h6 {{
+            color: #FFFFFF; /* Restaurar el color de todos los encabezados a blanco */
+            text-shadow: 2px 2px 6px #000; /* Sombra del texto para mejorar la legibilidad */
+        }}
+        .stTextInput > label {{
+            color: #FFFFFF; /* Color de las etiquetas de los campos de texto */
+        }}
+        .stSelectbox > label {{
+            color: #FFFFFF; /* Color de las etiquetas de los campos de selección */
+        }}
+        .stTextInput>div>input {{
+            color: #000000; /* Color del texto dentro del campo de entrada de texto */
+            background-color: #FFFFFF; /* Fondo blanco del campo de entrada de texto */
+        }}
+        .stSelectbox>div>input {{
+            color: #000000; /* Color del texto dentro del campo de selección */
+            background-color: #FFFFFF; /* Fondo blanco del campo de selección */
+        }}
         .restaurant-card {{
             border: 1px solid #FFD700; /* Borde dorado */
             border-radius: 8px;
@@ -40,6 +73,20 @@ st.markdown(f"""
         .restaurant-card a {{
             color: #1E90FF; /* Color de los enlaces en las tarjetas */
             text-decoration: none;
+        }}
+        .stButton>button {{
+            background-color: transparent; /* Fondo transparente del botón */
+            color: #FF4500; /* Color del texto del botón */
+            border: 2px solid #FF4500; /* Borde rojo del botón */
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 1em;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Sombra para los botones */
+            transition: background-color 0.3s ease;
+        }}
+        .stButton>button:hover {{
+            background-color: #FF4500; /* Fondo rojo del botón al pasar el mouse */
+            color: #FFFFFF; /* Color del texto al pasar el mouse */
         }}
     </style>
 """, unsafe_allow_html=True)
