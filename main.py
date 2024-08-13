@@ -79,7 +79,7 @@ st.markdown(f"""
             text-decoration: none;
         }}
         .stButton>button {{
-            background-color: transparent;
+            background-color: white;
             color: #FFFFFF;
             border: 2px solid #FF4500;
             border-radius: 4px;
@@ -89,7 +89,7 @@ st.markdown(f"""
             transition: background-color 0.3s ease;
         }}
         .stButton>button:hover {{
-            background-color: white;
+            background-color: black;
             color: #FFFFFF;
         }}
         .stMarkdown {{
