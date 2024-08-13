@@ -13,7 +13,7 @@ credentials = service_account.Credentials.from_service_account_info(credentials_
 client = bigquery.Client(credentials=credentials, location="us-central1")
 
 # Reemplaza esta URL con la URL de tu imagen de fondo
-background_image_url = "https://i0.wp.com/13thmansports.ca/wp-content/uploads/2022/08/F9EF1063-9AE7-4943-A384-ED6C9250EDB3.jpg?w=1280&ssl=1"
+background_image_url = "https://cdn.prod.website-files.com/5ddedd0e3047ab406ee3c37e/64aeef75a9175bfa44144333_Stadium_8.0.jpg"
 st.markdown(f"""
     <style>
         .stApp {{
