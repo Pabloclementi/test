@@ -11,20 +11,16 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import os
-from google.cloud import bigquery
-from google.oauth2 import service_account 
+from google.cloud import bigquery 
+from google.oauth2 import service_account
 
-# Descarga de stopwords y wordnet si no están ya disponibles
-nltk.download('stopwords', quiet=True)
-nltk.download('wordnet', quiet=True)
-nltk.download('punkt', quiet=True)
-
-# Leer las credenciales desde los secretos de Streamlit
-credentials_json = st.secrets["GOOGLE_CREDENTIALS"]
-
-# Configurar la conexión a BigQuery usando las credenciales desde el secreto
+# Configuración de las credenciales de Google Cloud
+credentials_json = {
+    "type": "service_account",
+    # ... aquí irían las demás claves del archivo JSON ...
+}
 credentials = service_account.Credentials.from_service_account_info(credentials_json)
-client = bigquery.Client(credentials=credentials, location="us-central1")
+client = bigquery.Client(credentials=credentials, project=credentials.project_id)
 
 # Cargar los datos
 def load_data():
@@ -65,7 +61,6 @@ def load_data_and_models():
     vectorizer = joblib.load('vectorizer.pkl')
     scaler = joblib.load('scaler.pkl')
     knn_model = joblib.load('knn_model.pkl')
-    # Retornar los modelos y los datos cargados previamente
     return vectorizer, scaler, knn_model, test
 
 def main():
@@ -97,7 +92,11 @@ def main():
             if filtered_data.empty:
                 st.write("No se encontraron locales que coincidan con los parámetros especificados.")
             else:
-                filtered_data['comentario_preprocesado'] = filtered_data['review_text'].apply(preprocess_text)
+                # Evitar SettingWithCopyWarning usando .loc o haciendo una copia
+                filtered_data = filtered_data.copy()
+                filtered_data.loc[:, 'comentario_preprocesado'] = filtered_data['review_text'].apply(preprocess_text)
+                
+                # Transformaciones con los modelos cargados
                 X_text_new = vectorizer.transform(filtered_data['comentario_preprocesado'])
                 X_num_new = scaler.transform(filtered_data[['num_of_reviews', 'avg_rating']])
                 X_new = hstack([X_text_new, X_num_new])
@@ -111,7 +110,7 @@ def main():
                     valid_indices = [i for i in indices if i < len(filtered_data)]
                     closest_locales = filtered_data.iloc[valid_indices][['name', 'avg_rating', 'url']]
                     unique_locales = pd.concat([unique_locales, closest_locales]).drop_duplicates().sort_values(by=['avg_rating'], ascending=[False])
-                    n_neighbors += 5  # Aumentar el número de vecinos en pasos de 5 para evitar cálculos innecesarios
+                    n_neighbors += 5
 
                 top_5_closest_names = unique_locales.head(5).reset_index(drop=True)
                 top_5_closest_names.index += 1
