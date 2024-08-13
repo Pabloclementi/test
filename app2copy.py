@@ -13,9 +13,6 @@ import os
 from google.cloud import bigquery 
 from google.oauth2 import service_account 
 import nltk
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('wordnet')
 
 # Leer las credenciales desde los secretos de Streamlit
 credentials_json = st.secrets["GOOGLE_CREDENTIALS"]
