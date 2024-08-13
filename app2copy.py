@@ -12,6 +12,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import os
 from google.cloud import bigquery
+from google.oauth2 import service_account 
 
 # Descarga de stopwords y wordnet si no están ya disponibles
 nltk.download('stopwords', quiet=True)
