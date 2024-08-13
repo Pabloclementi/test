@@ -13,7 +13,7 @@ credentials_json = st.secrets["GOOGLE_CREDENTIALS"]
 credentials = service_account.Credentials.from_service_account_info(credentials_json)
 client = bigquery.Client(credentials=credentials, location="us-central1")
 
-# Reemplaza esta URL con la URL de tu imagen de fondo
+# URL de la imagen de fondo
 background_image_url = "https://cdn.prod.website-files.com/5ddedd0e3047ab406ee3c37e/64aeef75a9175bfa44144333_Stadium_8.0.jpg"
 
 st.markdown(f"""
@@ -24,6 +24,7 @@ st.markdown(f"""
             background-position: center;
             background-attachment: fixed;
             color: #E0E0E0; /* Color del texto en general */
+            opacity: 0.85; /* Hacer la imagen de fondo opaca */
         }}
         .title {{
             font-size: 2.5em;
@@ -52,7 +53,7 @@ st.markdown(f"""
             background-color: #FFFFFF; /* Fondo blanco del campo de selección */
         }}
         .restaurant-card {{
-            border: 2px solid #FFD700; /* Borde dorado */
+            border: 1px solid #FFD700; /* Borde dorado */
             border-radius: 8px;
             padding: 10px;
             margin: 10px 0;
@@ -77,7 +78,7 @@ st.markdown(f"""
             text-decoration: none;
         }}
         .stButton>button {{
-            background-color: rgba(255, 69, 0, 0.8); /* Fondo transparente del botón */
+            background-color: #FF4500; /* Fondo transparente del botón */
             color: #FFFFFF; /* Color del texto del botón */
             border: 2px solid #FF4500; /* Borde rojo del botón */
             border-radius: 4px;
@@ -170,11 +171,11 @@ if st.button("Obtener recomendaciones"):
             st.write(f"Recomendaciones para {name} cerca de {stadium}:")
             for _, row in recommendations.iterrows():
                 st.markdown(f"""
-                <div class="restaurant-card">
-                    <h4>{row['name']}</h4>
-                    <p>Calificación: {row['avg_rating']}</p>
-                    <p><a href="{row['url']}" target="_blank">Ver en Google Maps</a></p>
-                </div>
+                    <div class="restaurant-card">
+                        <h4>{row['name']}</h4>
+                        <p>Calificación: {row['avg_rating']}</p>
+                        <a href="{row['url']}">Visitar Página</a>
+                    </div>
                 """, unsafe_allow_html=True)
         except ValueError as e:
             st.error(str(e))
