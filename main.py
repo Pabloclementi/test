@@ -26,6 +26,7 @@ st.markdown(f"""
             background-attachment: fixed;
             color: #E0E0E0; /* Color del texto en general */
             background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
+            opacity = 0.70
         }}
         .title {{
             font-size: 2.5em;
