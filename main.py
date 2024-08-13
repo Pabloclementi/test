@@ -80,7 +80,7 @@ st.markdown(f"""
         }}
         .stButton>button {{
             background-color: white;
-            color: #FFFFFF;
+            color: orange;
             border: 2px solid #FF4500;
             border-radius: 4px;
             padding: 10px 20px;
@@ -90,7 +90,7 @@ st.markdown(f"""
         }}
         .stButton>button:hover {{
             background-color: black;
-            color: #FFFFFF;
+            color: orange;
         }}
         .stMarkdown {{
             color: #FFFFFF;
