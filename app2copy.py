@@ -25,7 +25,7 @@ nltk.download('stopwords', quiet=True)
 nltk.download('wordnet', quiet=True)
 nltk.download('punkt', quiet=True)
 # URL de la imagen de fondo
-background_image_url = "https://github.com/Pabloclementi/test/blob/main/0bad11e7-69ff-4d30-b6c5-61b6b5a5cc2f.jpeg?raw=true"
+background_image_url = "https://github.com/Pabloclementi/test/blob/main/ac515990-1f33-47ca-bdff-a0c7e85dbd05.jpeg?raw=true"
 
 # Agregar estilo personalizado
 st.markdown(f"""
