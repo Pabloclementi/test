@@ -29,20 +29,24 @@ nltk.download('punkt', quiet=True)
 # Cargar los datos
 def load_data():
     query = """
-    SELECT 
-        a.review_text,
-        a.stadium,
-        a.num_of_reviews,
-        a.url,
-        a.avg_rating,
-        b.category,
-        a.name
-    FROM 
+   SELECT 
+    a.review_text,
+    a.stadium,
+    a.num_of_reviews,
+    a.url,
+    a.avg_rating,
+    b.category,
+    a.name
+FROM 
     divine-builder-431018-g4.horizon.Google_reviews AS a
-    INNER JOIN 
+INNER JOIN 
     divine-builder-431018-g4.horizon.Google_metadata AS b
-    ON 
-    a.gmap_id= b.gmap_id;
+ON 
+    a.gmap_id = b.gmap_id
+ORDER BY 
+    RAND()
+LIMIT 
+    80000;
     """
     test = client.query(query).to_dataframe()
     return test
