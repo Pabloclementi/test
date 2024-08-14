@@ -223,8 +223,13 @@ def main():
                 top_5_closest_names.index += 1
 
                 for index, row in top_5_closest_names.iterrows():
-                    st.markdown(f"*{index}. {row['name']}* - Rating: {row['avg_rating']}")
-                    st.markdown(f"[Ir a Googlemap]({row['url']})")
+                    st.markdown(f"""
+                        <div class="restaurant-card">
+                            <h4>{index}. {row['name']}</h4>
+                            <p>Rating: {row['avg_rating']}</p>
+                            <p><a href="{row['url']}" target="_blank">Ir a Googlemap</a></p>
+                        </div>
+                    """, unsafe_allow_html=True)
                     
         else:
             st.write("Por favor, ingrese tanto una palabra clave como un nombre de estadio.")
