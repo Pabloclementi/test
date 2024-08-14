@@ -46,7 +46,7 @@ ON
 ORDER BY 
     RAND()
 LIMIT 
-    60000;
+    80000;
     """
     test = client.query(query).to_dataframe()
     return test
