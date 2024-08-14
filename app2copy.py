@@ -98,7 +98,7 @@ def main():
 
             # Limpiar el caché cada 4 solicitudes
             if st.session_state.request_count >= 4:
-                st.caching.clear_cache()
+                st.cache_data.clear()
                 st.session_state.request_count = 0
 
             # Convertir 'stadium' a minúsculas
