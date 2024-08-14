@@ -25,34 +25,40 @@ nltk.download('stopwords', quiet=True)
 nltk.download('wordnet', quiet=True)
 nltk.download('punkt', quiet=True)
 
+# Crear o cargar el contador de solicitudes
+if "request_count" not in st.session_state:
+    st.session_state.request_count = 0
 
-# Cargar los datos
 def load_data():
     query = """
-   SELECT 
-    a.review_text,
-    a.stadium,
-    a.num_of_reviews,
-    a.url,
-    a.avg_rating,
-    b.category,
-    a.name
-FROM 
-    divine-builder-431018-g4.horizon.Google_reviews AS a
-INNER JOIN 
-    divine-builder-431018-g4.horizon.Google_metadata AS b
-ON 
-    a.gmap_id = b.gmap_id
-ORDER BY 
-    RAND()
-LIMIT 
-    80000;
+    SELECT 
+        a.review_text,
+        a.stadium,
+        a.num_of_reviews,
+        a.url,
+        a.avg_rating,
+        b.category,
+        a.name
+    FROM 
+        divine-builder-431018-g4.horizon.Google_reviews AS a
+    INNER JOIN 
+        divine-builder-431018-g4.horizon.Google_metadata AS b
+    ON 
+        a.gmap_id = b.gmap_id
+    ORDER BY 
+        RAND()
+    LIMIT 
+        80000;
     """
     test = client.query(query).to_dataframe()
     return test
 
+@st.cache_data
+def cached_load_data():
+    return load_data()
+
 # Cargar los datos en la variable global
-test = load_data()
+test = cached_load_data()
 
 # Función para preprocesar el texto
 def preprocess_text(text):
@@ -87,6 +93,14 @@ def main():
 
     if st.button("Ver recomendaciones"):
         if keyword and stadium_name:
+            # Incrementar el contador de solicitudes
+            st.session_state.request_count += 1
+
+            # Limpiar el caché cada 4 solicitudes
+            if st.session_state.request_count >= 4:
+                st.caching.clear_cache()
+                st.session_state.request_count = 0
+
             # Convertir 'stadium' a minúsculas
             test['stadium'] = test['stadium'].str.lower()
             
